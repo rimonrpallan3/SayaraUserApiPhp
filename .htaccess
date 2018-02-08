@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+
+	ErrorDocument 404 404.php
+	ErrorDocument 403 403.php
+	ErrorDocument 401 401.php
+
+	RewriteEngine On
+	RewriteBase /sayara/
+
+	RewriteRule ^driver/register/$ driver/register.php?page=$1 [L,QSA] 
+	RewriteRule ^driver/login/$ driver/login.php?page=$1 [L,QSA] 
+	RewriteRule ^driver/documents/$ driver/documents.php?page=$1 [L,QSA] 
+	RewriteRule ^driver/updateStatus/$ driver/updateStatus.php?page=$1 [L,QSA] 
+	RewriteRule ^driver/updateLocation/$ driver/updateLocation.php?page=$1 [L,QSA] 
+	RewriteRule ^driver/logout/$ driver/logout.php?page=$1 [L,QSA] 
+	
+
+	RewriteRule ^user/register/$ user/register.php?page=$1 [L,QSA] 
+	RewriteRule ^user/login/$ user/login.php?page=$1 [L,QSA] 
+	RewriteRule ^user/updateProfile/$ user/updateProfile.php?page=$1 [L,QSA] 
+	RewriteRule ^user/booking/$   user/booking.php?page=$1 [L,QSA] 
+	RewriteRule ^user/tripHistory/$   user/tripHistory.php?view=all [nc,qsa]
+	RewriteRule ^user/driverProfile/$   user/driverProfile.php?page=$1 [L,QSA]
+	RewriteRule ^user/driverFound/$   user/driverFound.php?page=$1 [L,QSA]
+
+	RewriteRule ^driver/getDriver/$   driver/getDriver.php?view=all [nc,qsa]
+	RewriteRule ^driver/getDriver/([0-9]+)/$   driver/getDriver.php?view=single&id=$1 [nc,qsa]
+
+#RewriteCond %{DOCUMENT_ROOT}/sayara/$1\.html -f [NC]
+#RewriteRule ^([^.]+)$ $1.html [L]
+
+</IfModule>
